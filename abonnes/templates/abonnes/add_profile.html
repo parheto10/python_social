@@ -1,0 +1,186 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Jobya - Responsive Job Board HTML Template</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Themesdesign" />
+
+        {% include 'css.html' %}
+
+{#        <link rel="shortcut icon" href="images/favicon.ico">#}
+{##}
+{#        <!-- Bootstrap core CSS -->#}
+{#        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">#}
+{##}
+{#        <!--Material Icon -->#}
+{#        <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />#}
+{##}
+{#        <link rel="stylesheet" type="text/css" href="css/selectize.css" />#}
+{##}
+{#        <link rel="stylesheet" type="text/css" href="css/nice-select.css" />#}
+{##}
+{#        <!-- Custom  Css -->#}
+{#        <link rel="stylesheet" type="text/css" href="css/style.css" />#}
+
+    </head>
+
+    <body>
+        <!-- Loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Loader -->
+
+        <div class="back-to-home rounded d-none d-sm-block">
+            <a href="index.html" class="text-white rounded d-inline-block text-center"><i class="mdi mdi-home"></i></a>
+        </div>
+
+        <!-- Hero Start -->
+        <section class="vh-200" style="background: url('https://via.placeholder.com/2000X1333//88929f/5a6270C/O https://placeholder.com/') center center;">
+            <div class="home-center">
+                <div class="home-desc-center">
+                    <div class="container" style="margin-top: 50px; margin-bottom: 30px">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="login_page bg-white shadow rounded p-4">
+                                    <div class="text-center">
+                                        <h4 class="mb-4">Inscription</h4>
+                                    </div>
+                                    <form class="login-form" method="post" enctype="multipart/form-data" class="form">
+                                        {% csrf_token %}
+{#                                        {{ user_form }}#}
+{#                                        {{ profile_form }}#}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group position-relative">
+                                                    <label>Genre <span class="text-danger">*</span></label>
+                                                    <select name="genre" class="form-control" title="" id="id_genre">
+                                                        <option value="H" selected="">HOMMME</option>
+                                                        <option value="F">FEMME</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Prénoms <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="prénoms" name="first_name" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Nom <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="Nom" name="last_name" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group position-relative">
+                                                    <label for="id_wht">Contact WhatsApp</label>
+                                                    <input type="tel" name="wht" maxlength="128" class="form-control" placeholder="Contact WhatsApp" title="+225xxxxxxxx" required="" id="id_wht">
+                                                    <small class="form-text text-muted">+225xxxxxxxx</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Nom Utilisateur <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="Nom Utilisateur" name="username" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Email <span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" placeholder="Email" name="email" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Mot de Passe <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control" placeholder="Mot de passe" name="password1" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label>Confirmer le Mot de Passe <span class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control" placeholder="Confirmer mot de passe" name="password2" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label for="id_experience">Expérience <span class="text-danger">*</span></label>
+                                                    <select name="experence" class="form-control" title="" required="" id="id_experence">
+                                                        <option value="debutant">DEBUTANT</option>
+                                                        <option value="intermediaire">INTERMEDIAIRE</option>
+                                                        <option value="expert">EXPERT</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group position-relative">
+                                                    <label for="id_langages">Preciser vos Langages</label>
+                                                    <select name="langages" class="form-control" title="" required="" id="id_langages" multiple="">
+                                                          <option value="5">C</option>
+                                                          <option value="3">C#</option>
+                                                          <option value="6">C++</option>
+                                                          <option value="8">Flutter</option>
+                                                          <option value="11">Go</option>
+                                                          <option value="2">Java</option>
+                                                          <option value="7">Kotlin</option>
+                                                          <option value="13">Objectif-C</option>
+                                                          <option value="4">Php</option>
+                                                          <option value="1">Python</option>
+                                                          <option value="9">React</option>
+                                                          <option value="10">React native</option>
+                                                          <option value="12">Swift</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 position-relative">
+                                                <div class="form-group">
+                                                <label for="id_avatar">Avatar</label><input type="file" name="avatar" accept="image/*" class="form-control-file" title="" id="id_avatar">
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button class="btn btn-primary w-100">Inscription</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="reset" class="btn btn-danger w-100">Annuler</button>
+                                            </div>
+                                            <div class="mx-auto">
+                                                <p class="mb-0 mt-3"><small class="text-dark mr-2">J'ai déjà un Compte,</small> <a href="{% url 'params:login' %}" class="text-dark font-weight-bold">Je me Connecte</a></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div> <!--end col-->
+                        </div><!--end row-->
+                    </div> <!--end container-->
+                </div>
+            </div>
+        </section><!--end section-->
+        <!-- Hero End -->
+
+        {% include 'js.html' %}
+
+{#        <!-- javascript -->#}
+{#        <script src="js/jquery.min.js"></script>#}
+{#        <script src="js/bootstrap.bundle.min.js"></script>#}
+{#        <script src="js/jquery.easing.min.js"></script>#}
+{#        <script src="js/plugins.js"></script>#}
+{##}
+{#        <!-- selectize js -->#}
+{#        <script src="js/selectize.min.js"></script>#}
+{##}
+{#        <script src="js/jquery.nice-select.min.js"></script>#}
+{##}
+{#        <script src="js/app.js"></script>#}
+    </body>
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jobya - Responsive Job Board HTML Template</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Themesdesign" />
+
+    {% include 'css.html' %}
+
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader -->
+
+    <!-- Navigation Bar-->
+    {% include 'navbar.html' %}
+    <!-- Navbar End -->
+
+    <!-- Start Home -->
+    {% include 'home_start.html' %}
+    <!-- end home -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- footer start -->
+        {% include 'footer.html' %}
+    <!-- footer end -->
+
+
+    {% include 'js.html' %}
+
+</body>
+</html>
+
+

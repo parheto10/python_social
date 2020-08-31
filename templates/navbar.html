@@ -1,5 +1,14 @@
 {% load static %}
 
+{% url 'home' as home_url %}
+{% url 'params:login' as login_url %}
+{% url 'param:logout' as logout_url %}
+{% url 'params:add_profile' as register_url %}
+{% url 'contact' as contact_url %}
+{% url 'about' as about_url %}
+{#{% url 'produits:produits' as produits_url %}#}
+{#{% url 'panier:panier' as panier_url %}#}
+
 <header id="topnav" class="defaultscroll scroll-active">
     <!-- Tagline STart -->
     <div class="tagline">
@@ -16,7 +25,15 @@
             </div>
             <div class="float-right">
                 <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                    <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Benny Simpson</a></li>
+                    <li class="list-inline-item">
+                        <a href="javascript:void(0);">
+                            <i class="mdi mdi-account mr-2"></i>
+                            {% if user.is_authenticated %}
+                              {{ user.username }}
+                            {% else %}
+                               Compte
+                            {% endif %}
+                        </a></li>
                     <li class="list-inline-item">
                         <select id="select-lang" class="demo-default">
                             <option value="">Language</option>

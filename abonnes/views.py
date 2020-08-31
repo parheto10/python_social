@@ -44,12 +44,15 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    # return HttpResponse('Bienvenus Sur Codons en Python fr')
+                    messages.success(request, 'Bienvenus Sur Codons en Python fr')
                     return redirect('params:home')
                 else:
-                    return HttpResponse('Compte Désactiver')
+                    #return HttpResponse('Compte Désactiver')
+                    messages.error(request, 'Compte Désactiver')
+                    return redirect('params:login')
             else:
-                return HttpResponse('Paramètres de Conexion Invalide, Merci de Réessayer SVP !!!')
+                messages.error(request, 'Paramètres de Conexion Invalide, Merci de Réessayer SVP !!!')
+                return redirect('params:login')
     else:
         form = LoginForm()
     context = {'form': form}
@@ -61,6 +64,8 @@ def add_profile(request):
         user_form = UserRegistration(request.POST)
         profile_form = ProfileForm(request.POST or None, request.FILES or None)
         if user_form.is_valid() and profile_form.is_valid():
+            # langageuser = Profile.objects.get(user=request.user)
+            # langages = langageuser.langages.all()
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -68,12 +73,12 @@ def add_profile(request):
             profile = profile_form.save(commit=False)
             profile.user = user
             profile = profile.save()
-            print(profile)
+            # print(langages)
             #grp_personnel = Group.objects.get_or_create(name='PERSONNEL')
             #grp_personnel[0].user_set.add(user)
             messages.success(request, "Profile Créé avec Succès")
             #return redirect('abonnes:add_profile')
-            return redirect(reverse('abonnes:login'))
+            return redirect(reverse('params:add_profile'))
     else:
         user_form = UserRegistration()
         profile_form = ProfileForm()

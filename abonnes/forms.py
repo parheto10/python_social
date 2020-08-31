@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Profile
+from .models import Profile, Langage
+
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -32,11 +33,13 @@ class UserUpdate(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
     avatar = forms.ImageField(required=False)
+    langages = forms.ModelMultipleChoiceField(queryset=Langage.objects.all())
     #profile = forms.ImageField(required=False)
     class Meta:
         model = Profile
         fields = [
             'genre',
+            'pays',
             'experence',
             'wht',
             'langages',
@@ -46,6 +49,7 @@ class ProfileForm(forms.ModelForm):
 class EditProfileForm(forms.ModelForm):
     avatar = forms.ImageField(required=False)
     profile = forms.ImageField(required=False)
+    langages = forms.ModelMultipleChoiceField(queryset=Langage.objects.all())
     class Meta:
         model = Profile
         fields = [

@@ -62,8 +62,8 @@ class Profile(models.Model):
     experence = models.CharField(max_length=50, choices=EXPERIENCE)
     wht = PhoneNumberField(help_text="+225xxxxxxxx", verbose_name="Contact WhatsApp") # PhoneNumber.from_string(phone_number=raw_phone, region='CI').as_e164
     pays = CountryField(blank_label='(Préciser Le Pays)')
-    ville = models.CharField(max_length=255)
-    langages = models.ManyToManyField(Langage, verbose_name="Preciser vos Langages")
+    ville = models.CharField(max_length=255, blank=True, null=True)
+    langages = models.ManyToManyField(Langage, verbose_name="Preciser vos Langages", help_text='Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.')
     bio = models.TextField(blank=True, null=True)
     avatar = models.ImageField(upload_to="upload_avatar", blank=True, null=True)
     profile = models.ImageField(upload_to="upload_profile", blank=True, null=True)
